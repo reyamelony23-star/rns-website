@@ -184,6 +184,65 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:none}
 
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 0 16px; height: 60px; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: fixed;
+    top: 60px; left: 0; right: 0; background: #fff;
+    padding: 20px; gap: 16px; border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08); z-index: 99;
+  }
+  .nav-hamburger { display: none; }
+  @media(max-width:768px){.nav-hamburger{
+    display: flex; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 8px; margin-left: auto;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: #111; border-radius: 2px; transition: all .3s;
+  }
+  .hero { flex-direction: column; padding: 40px 20px; min-height: auto; gap: 30px; }
+  .hero-left { max-width: 100%; }
+  .hero-right { max-width: 100%; width: 100%; }
+  .hero-img { height: 260px; }
+  .hero-badge { left: 10px; bottom: 14px; padding: 10px 14px; }
+  .hero h1 { font-size: 38px; }
+  .stats-bar { padding: 30px 20px; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .stat-num { font-size: 42px; }
+  .section { padding: 50px 20px; }
+  .services-grid { grid-template-columns: 1fr; gap: 16px; }
+  .about-split { grid-template-columns: 1fr; gap: 30px; }
+  .about-right img { height: 260px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gallery-item:first-child { grid-row: span 1; }
+  .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .cta-banner { padding: 50px 20px; }
+  .cta-banner-btns { flex-direction: column; align-items: center; }
+  /* Services page */
+  .services-list { grid-template-columns: 1fr; }
+  .why-strip-inner { grid-template-columns: repeat(2,1fr); }
+  /* About page */
+  .contact-split { grid-template-columns: 1fr; gap: 30px; }
+  .team-grid { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .timeline::before { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .page-hero { padding: 40px 20px; }
+  .page-hero h1 { font-size: 36px; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 30px; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: 1fr; }
+}
 </style>
 <style id="svc-styles">
 
@@ -426,8 +485,11 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
     <a href="#" onclick="navigate('services');return false">Services</a>
     <a href="#" onclick="navigate('about');return false">About</a>
     <a href="#" onclick="navigate('about');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300);return false">Contact</a>
-    <a href="#" onclick="navigate('about');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300);return false" class="nav-cta">Get a Quote</a>
+    <a href="https://wa.me/6583837001?text=Hi%2C%20I%27d%20like%20to%20get%20a%20quote" class="nav-cta" target="_blank">Get a Quote</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" style="display:none;background:none;border:none;cursor:pointer">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -438,7 +500,7 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
     <h1>Engineering <em>Excellence</em> &amp; Reliable Services</h1>
     <p class="hero-sub">Your trusted partner for precision vehicle repair, fleet maintenance, and commercial vehicle servicing solutions across Singapore.</p>
     <div class="hero-btns">
-      <a href="#" onclick="navigate('about');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300);return false" class="btn-primary">Get a Quote</a>
+      <a href="https://wa.me/6583837001?text=Hi%2C%20I%27d%20like%20to%20get%20a%20quote" class="btn-primary" target="_blank">Get a Quote</a>
       <a href="#" onclick="navigate('services');return false" class="btn-outline">Our Services</a>
     </div>
   </div>
@@ -648,7 +710,7 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
     <h2>Ready to Service Your Fleet?</h2>
     <p>Contact us today for a free quote. Our team responds within 2 business hours.</p>
     <div class="cta-banner-btns">
-      <a href="#" onclick="navigate('about');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300);return false" class="btn-white">Get a Free Quote</a>
+      <a href="#" onclick="navigate('about');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300);return false" class="btn-white" onclick="window.open('https://wa.me/6583837001?text=Hi%2C%20I%27d%20like%20to%20get%20a%20quote','_blank')">Get a Free Quote</a>
       <a href="https://wa.me/6583837001" class="btn-white-outline">💬 WhatsApp Us</a>
     </div>
   </div>
@@ -677,7 +739,7 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
       <div class="footer-col">
         <h4>Contact</h4>
         <p><strong>Address</strong><br>Singapore</p>
-        <p style="margin-top:10px"><strong>Phone</strong><br>+65 XXXX XXXX</p>
+        <p style="margin-top:10px"><strong>Phone</strong><br>+65 8383 7001</p>
         <p style="margin-top:10px"><strong>WhatsApp</strong><br>+65 8687 0041</p>
         <p style="margin-top:10px"><strong>Hours</strong><br>Mon–Sat 8am–6pm<br>24Hr Breakdown Hotline</p>
       </div>
@@ -719,8 +781,11 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
     <a href="#" onclick="navigate('services');return false" id="nav-services" class="active">Services</a>
     <a href="#" onclick="navigate('about');return false">About</a>
     <a href="#" onclick="navigate('about');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300);return false">Contact</a>
-    <a href="#" onclick="navigate('about');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300);return false" class="nav-cta">Get a Quote</a>
+    <a href="https://wa.me/6583837001?text=Hi%2C%20I%27d%20like%20to%20get%20a%20quote" class="nav-cta" target="_blank">Get a Quote</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" style="display:none;background:none;border:none;cursor:pointer">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="page-hero">
@@ -831,7 +896,7 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
   <div class="cta-strip-inner">
     <h3>Not Sure Which Service You Need?</h3>
     <p>Talk to our team and we'll recommend the right solution for your vehicle and fleet.</p>
-    <a href="#" onclick="navigate('about');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300);return false" class="btn-primary">Talk to Our Team</a>
+    <a href="https://wa.me/6583837001?text=Hi%2C%20I%27d%20like%20to%20get%20a%20quote" target="_blank" class="btn-primary">Talk to Our Team</a>
   </div>
 </div>
 
@@ -894,8 +959,11 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
     <a href="#" onclick="navigate('services');return false">Services</a>
     <a href="#" onclick="navigate('about');return false" id="nav-about" class="active">About</a>
     <a href="#" onclick="navigate('about');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300);return false">Contact</a>
-    <a href="#" onclick="navigate('about');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300);return false" class="nav-cta">Get a Quote</a>
+    <a href="https://wa.me/6583837001?text=Hi%2C%20I%27d%20like%20to%20get%20a%20quote" class="nav-cta" target="_blank">Get a Quote</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" style="display:none;background:none;border:none;cursor:pointer">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="page-hero">
@@ -1016,7 +1084,7 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
           <div class="contact-icon">📞</div>
           <div class="contact-detail-text">
             <strong>Phone</strong>
-            <span>+65 XXXX XXXX</span>
+            <span>+65 8383 7001</span>
           </div>
         </div>
         <div class="contact-detail">
@@ -1030,7 +1098,7 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
           <div class="contact-icon">✉️</div>
           <div class="contact-detail-text">
             <strong>Email</strong>
-            <span>enquiry@rsengineering.com.sg</span>
+            <span>info@rsengineering.com.sg</span>
           </div>
         </div>
         <div class="contact-detail">
@@ -1065,7 +1133,7 @@ footer{background:var(--black);color:var(--white);padding:60px 40px 30px}
         <div class="form-row">
           <div class="form-group">
             <label>Phone</label>
-            <input type="tel" placeholder="+65 XXXX XXXX">
+            <input type="tel" placeholder="+65 8383 7001">
           </div>
           <div class="form-group">
             <label>Email</label>
